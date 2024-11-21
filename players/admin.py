@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Player, Stat
+from .models import Player, Stat, Record
 
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
@@ -13,3 +13,7 @@ class StatAdmin(admin.ModelAdmin):
         'fumbles', 'broken_tackles', 'YAC', 'receiving_yards', 'touchdowns'
     )
     list_filter = ('season', 'player__team')
+
+@admin.register(Record)
+class RecordAdmin(admin.ModelAdmin):
+    list_display = ('category', 'value', 'holder', 'team')

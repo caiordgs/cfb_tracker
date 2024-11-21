@@ -27,20 +27,37 @@
         </thead>
         <tbody>
             {% for stat in stats %}
-            <tr>
-                <td>{{ stat.player.name }}</td>
-                <td>{{ stat.season }}</td>
-                <td>{{ stat.games_started }}</td>
-                <td>{{ stat.passing_completions }}</td>
-                <td>{{ stat.passing_yards }}</td>
-                <td>{{ stat.touchdowns_passed }}</td>
-                <td>{{ stat.interceptions }}</td>
-                <td>{{ stat.rushing_yards }}</td>
-                <td>{{ stat.fumbles }}</td>
-                <td>{{ stat.receptions }}</td>
-                <td>{{ stat.receiving_yards }}</td>
-                <td>{{ stat.touchdowns }}</td>
-            </tr>
+            <tr class="{% if stat.breaks_record %}table-success{% endif %}">
+    <td>{{ stat.player.name }}</td>
+    <td>{{ stat.season }}</td>
+    <td>{{ stat.games_started }}</td>
+    <td>{{ stat.passing_completions }}</td>
+    <td>
+        {{ stat.passing_yards }}
+        {% if stat.breaks_record.Jardas_de_Passe %}
+            <span class="badge bg-success">Quebra de Recorde!</span>
+        {% endif %}
+    </td>
+    <td>
+        {{ stat.touchdowns_passed }}
+        {% if stat.breaks_record.Touchdowns_Passados %}
+            <span class="badge bg-success">Quebra de Recorde!</span>
+        {% endif %}
+    </td>
+    <td>{{ stat.interceptions }}</td>
+    <td>
+        {{ stat.rushing_yards }}
+        {% if stat.breaks_record.Jardas_Corridas %}
+            <span class="badge bg-success">Quebra de Recorde!</span>
+        {% endif %}
+    </td>
+    <td>{{ stat.fumbles }}</td>
+    <td>{{ stat.receptions }}</td>
+    <td>{{ stat.receiving_yards }}</td>
+    <td>{{ stat.touchdowns }}</td>
+</tr>
+
+
             {% empty %}
             <tr>
                 <td colspan="12" class="text-center">Nenhuma estatística disponível.</td>

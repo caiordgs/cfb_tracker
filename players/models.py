@@ -79,3 +79,41 @@ class Stat(models.Model):
 
     def __str__(self):
         return f"Stats for {self.player.name} - {self.season}"
+
+class Record(models.Model):
+    category = models.CharField(max_length=100)  # Categoria do recorde (ex.: "Jardas de Passe")
+    value = models.IntegerField()  # Valor do recorde
+    holder = models.CharField(max_length=100, null=True, blank=True)  # Nome do detentor do recorde
+    team = models.CharField(max_length=100, null=True, blank=True)  # Time ou escola relacionada
+
+    def __str__(self):
+        return f"{self.category} - {self.value} ({self.holder})"
+
+class HistoricRecord(models.Model):
+    school = models.CharField(max_length=100)
+    player = models.CharField(max_length=100)
+    year_start = models.IntegerField(null=True, blank=True)
+    year_end = models.IntegerField(null=True, blank=True)
+    completions = models.IntegerField(null=True, blank=True)
+    attempts = models.IntegerField(null=True, blank=True)
+    completion_percentage = models.FloatField(null=True, blank=True)
+    yards = models.IntegerField(null=True, blank=True)
+    yards_per_attempt = models.FloatField(null=True, blank=True)
+    touchdowns = models.IntegerField(null=True, blank=True)
+    interceptions = models.IntegerField(null=True, blank=True)
+    passer_rating = models.FloatField(null=True, blank=True)
+    rush_attempts = models.IntegerField(null=True, blank=True)
+    rush_yards = models.IntegerField(null=True, blank=True)
+    yards_per_carry = models.FloatField(null=True, blank=True)
+    rush_tds = models.IntegerField(null=True, blank=True)
+    receptions = models.IntegerField(null=True, blank=True)
+    receiving_yards = models.IntegerField(null=True, blank=True)
+    yards_per_catch = models.FloatField(null=True, blank=True)
+    receiving_tds = models.IntegerField(null=True, blank=True)
+    plays_from_scrim = models.IntegerField(null=True, blank=True)
+    yards_from_scrim = models.IntegerField(null=True, blank=True)
+    avg_yards_per_play = models.FloatField(null=True, blank=True)
+    scrimmage_tds = models.IntegerField(null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.player} ({self.school})"
