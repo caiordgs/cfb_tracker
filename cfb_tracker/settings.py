@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'players',
 ]
 
 MIDDLEWARE = [
@@ -75,10 +76,15 @@ WSGI_APPLICATION = 'cfb_tracker.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'cfb_tracker',
+        'USER': 'root',
+        'PASSWORD': 'HokagE123!',
+        'HOST': 'localhost',  # Use 'localhost' para desenvolvimento local
+        'PORT': '3306',  # Porta padrão do MySQL
     }
 }
+
 
 
 # Password validation
