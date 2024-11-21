@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Player, Stat
 from .forms import StatForm
+
 
 def index(request):
     players = Player.objects.all()
