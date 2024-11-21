@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciador de Jogadores</title>
+</head>
+<body>
+    <h1>Bem-vindo ao Gerenciador de Jogadores</h1>
+    <h2>Lista de Jogadores</h2>
+    <ul>
+        {% for player in players %}
+            <li>{{ player.name }} - {{ player.position }} ({{ player.team }})</li>
+        {% empty %}
+            <li>Nenhum jogador cadastrado.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Temporadas</h2>
+    <ul>
+        {% for season in seasons %}
+            <li>{{ season.player.name }} - {{ season.year }}: {{ season.games_played }} jogos, {{ season.touchdowns }} TDs, {{ season.yards }} jardas</li>
+        {% empty %}
+            <li>Nenhuma temporada cadastrada.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

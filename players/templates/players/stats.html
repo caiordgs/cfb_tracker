@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estatísticas dos Jogadores</title>
+</head>
+<body>
+    <h1>Estatísticas dos Jogadores</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Jogador</th>
+                <th>Temporada</th>
+                <th>Jogos Iniciados</th>
+                <th>Passes Completos</th>
+                <th>Jardas de Passe</th>
+                <th>Touchdowns Passados</th>
+                <th>Interceptações</th>
+                <th>Jardas Corridas</th>
+                <th>Fumbles</th>
+                <th>Recepções</th>
+                <th>Jardas Recebidas</th>
+                <th>Touchdowns</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for stat in stats %}
+            <tr>
+                <td>{{ stat.player.name }}</td>
+                <td>{{ stat.season }}</td>
+                <td>{{ stat.games_started }}</td>
+                <td>{{ stat.passing_completions }}</td>
+                <td>{{ stat.passing_yards }}</td>
+                <td>{{ stat.touchdowns_passed }}</td>
+                <td>{{ stat.interceptions }}</td>
+                <td>{{ stat.rushing_yards }}</td>
+                <td>{{ stat.fumbles }}</td>
+                <td>{{ stat.receptions }}</td>
+                <td>{{ stat.receiving_yards }}</td>
+                <td>{{ stat.touchdowns }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="12">Nenhuma estatística disponível.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
